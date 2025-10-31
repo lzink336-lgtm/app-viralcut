@@ -44,6 +44,38 @@ OPENAI_API_KEY=sk-your-openai-api-key-here
 npm run dev
 ```
 
+### Backend FastAPI
+
+O backend Python processa download, transcrição e geração dos cortes virais. Para executá-lo localmente:
+
+1. **Crie e ative um ambiente virtual**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
+2. **Instale as dependências**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+   Para habilitar o túnel opcional do ngrok, confirme que o pacote está instalado:
+   ```bash
+   pip install pyngrok
+   ```
+
+3. **Inicie o servidor**
+   ```bash
+   uvicorn main:app --reload
+   ```
+
+O serviço estará disponível em [http://127.0.0.1:8000](http://127.0.0.1:8000). Ao final do boot o terminal exibirá
+`Servidor iniciado com sucesso`. Se a variável de ambiente `ENABLE_NGROK=1` estiver configurada, o log mostrará o endereço
+externo do túnel criado automaticamente.
+
+> ℹ️ Executar `python main.py` com o pacote `pyngrok` instalado ativa o túnel automaticamente. Para desabilitar esse
+> comportamento, defina `ENABLE_NGROK=0` antes de iniciar o servidor.
+
 ## 🔧 Configuração
 
 ### OpenAI API Key
@@ -174,5 +206,4 @@ MIT License - Veja [LICENSE](LICENSE) para detalhes.
 
 ---
 
-**ViralCut Pro** - Transforme qualquer vídeo em conteúdo viral. 👑</content>
-<parameter name="path">README.md
+**ViralCut Pro** - Transforme qualquer vídeo em conteúdo viral. 👑
